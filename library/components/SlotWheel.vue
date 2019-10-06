@@ -13,11 +13,11 @@
 
 <script lang="ts">
 import Component from "vue-class-component";
-import ShuffleQueue from "../library/ShuffleQueue";
+import ShuffleQueue from "../classes/ShuffleQueue";
 import Vue from "vue";
 
 import config from "app.config.yml";
-import randomIntFactory from "../library/randomIntFactory";
+import randomIntFactory from "../functions/randomIntFactory";
 
 @Component({
   props: {

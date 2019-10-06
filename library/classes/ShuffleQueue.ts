@@ -1,4 +1,4 @@
-import randomIntFactory from "./randomIntFactory";
+import randomIntFactory from "../functions/randomIntFactory";
 
 /**
  *
