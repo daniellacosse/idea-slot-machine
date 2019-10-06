@@ -16,7 +16,7 @@ import Component from "vue-class-component";
 import ShuffleQueue from "../library/ShuffleQueue";
 import Vue from "vue";
 
-import config from "../../app.config.yml";
+import config from "app.config.yml";
 import randomIntFactory from "../library/randomIntFactory";
 
 @Component({
