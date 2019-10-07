@@ -116,14 +116,18 @@ export default class SlotWheel extends Vue {
 
 <style scoped>
 .SlotWheel {
-  height: 10em;
-  border: 1px solid var(--black-color);
+  height: calc(var(--title-size) * 6);
   padding: var(--vert-padding) var(--horiz-padding);
 
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  overflow: hidden;
+  border-radius: calc(var(--horiz-padding) / 2);
+  background: var(--background-color);
 
   transition: background-color 350ms ease-out;
 
@@ -139,7 +143,7 @@ export default class SlotWheel extends Vue {
     background-color: var(--tick-color);
   }
   to {
-    background-color: transparent;
+    background-color: var(--background-color);
   }
 }
 
@@ -152,20 +156,34 @@ export default class SlotWheel extends Vue {
 }
 
 .SlotWheel--set > .SlotWheel__value {
-  color: var(--set-text-color);
+  color: var(--white-color);
 }
 
 .SlotWheel__value {
   text-align: center;
   font-size: var(--title-size);
 
+  color: var(--type-text-color);
+  font-family: monospace;
+  position: relative;
+  top: calc(var(--caption-size) / 2);
+  hyphens: auto;
+
   transition: color 350ms ease-out;
 }
 
 .SlotWheel__name {
-  font-size: var(--footnote-size);
+  font-size: var(--caption-size);
   text-transform: uppercase;
 
-  color: var(--type-text-color);
+  position: absolute;
+  top: 0;
+  background: var(--emphasis-background-color);
+  width: 100%;
+  text-align: center;
+  height: calc(2 * var(--caption-size));
+  line-height: calc(2 * var(--caption-size));
+
+  color: var(--set-text-color);
 }
 </style>

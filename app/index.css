@@ -11,22 +11,28 @@
 }
 
 :root {
+  font-size: 16px;
+
   /* variables */
   --max-supported-width: 1080px;
   --min-supported-width: 320px;
 
-  --horiz-padding: 1em;
-  --vert-padding: 0.75em;
+  --horiz-padding: 1rem;
+  --vert-padding: 0.75rem;
 
-  --title-size: 2em;
-  --paragraph-size: 1em;
-  --footnote-size: 0.75em;
+  --title-size: 2.1rem;
+  --caption-size: 1rem;
+  --footnote-size: 0.75rem;
 
   --white-color: rgb(255, 255, 255);
   --black-color: rgb(0, 0, 0);
   --gray-color: rgb(128, 128, 128);
-  --tick-color: rgb(210, 242, 255);
-  --type-text-color: rgb(226, 111, 17);
-  --set-color: rgb(26, 227, 227);
-  --set-text-color: rgb(7, 48, 90);
+
+  --background-color: #d7effd;
+  --emphasis-background-color: #166b9a;
+
+  --type-text-color: #545c61;
+  --tick-color: rgb(149, 204, 237);
+  --set-color: #1c98de;
+  --set-text-color: var(--white-color);
 }

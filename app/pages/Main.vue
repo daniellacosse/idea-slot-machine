@@ -58,7 +58,7 @@ export default class Main extends Vue {
   flex-direction: column;
 
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 
   width: 100vw;
   height: 100vh;

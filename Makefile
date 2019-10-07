@@ -4,7 +4,7 @@ COMMANDS=$(BUILDFILES_FOLDER)/main.mk $(BUILDFILES_FOLDER)/commands/*.mk
 
 override SOURCE_FOLDER=app
 override PACKAGE_ENTRY_POINT=$(SOURCE_FOLDER)/index.html
-override PACKACE_FOLDER=artifacts
+override PACKAGE_FOLDER=artifacts
 override PACKAGE_BUILD=$(PACKAGE_FOLDER)/$(SOURCE_FOLDER)/index.html
 override PACKAGE_TARGET=browser
 

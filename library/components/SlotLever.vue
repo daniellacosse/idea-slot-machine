@@ -19,11 +19,14 @@ export default {
 
 <style scoped>
 .SlotLever {
-  font-size: var(--paragraph-size);
+  font-size: var(--title-size);
   padding: var(--vert-padding) var(--horiz-padding);
 
   color: var(--white-color);
-  background: var(--black-color);
+  background: var(--emphasis-background-color);
+
+  width: var(--min-supported-width);
+  border-radius: calc(var(--horiz-padding) / 2);
 
   cursor: pointer;
 }
