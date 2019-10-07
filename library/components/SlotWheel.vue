@@ -169,6 +169,9 @@ export default class SlotWheel extends Vue {
   top: calc(var(--caption-size) / 2);
   hyphens: auto;
 
+  /* annoyingly, autoprefixer doesn't do this for us? */
+  -webkit-hyphens: auto;
+
   transition: color 350ms ease-out;
 }
 
