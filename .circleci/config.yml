@@ -51,7 +51,7 @@ jobs:
     steps:
       - get_dependencies
 
-      - run: make build/index.html
+      - run: make artifacts/app/index.html
 
   lint:
     executor: node
