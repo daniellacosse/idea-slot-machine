@@ -10,8 +10,29 @@
     </title>
 
     <link rel="stylesheet" href="./index.css" />
+    <style type="text/css">
+      .PortraitWarning {
+        display: none;
+      }
+      @media only screen and (orientation: portrait) {
+        main {
+          display: none;
+        }
+        .PortraitWarning {
+          display: block;
+        }
+      }
+      @media only screen and (orientation: landscape) {
+        .PortraitWarning {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div class="PortraitWarning">
+      this website is only viewable in landscape mode
+    </div>
     <main>
       <!-- vue app renders here -->
     </main>
