@@ -28,6 +28,9 @@ export default {
   width: var(--min-supported-width);
   border-radius: calc(var(--horiz-padding) / 2);
 
+  line-height: 2em;
+  font-family: HelveticaNeue, "HelveticaNeue", Helvetica, sans-serif;
+
   cursor: pointer;
 }
 
