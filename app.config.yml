@@ -22,6 +22,8 @@ slots:
       - "social deception"
       - "legacy"
       - "combat"
+      - "tower defense"
+      - "infinite"
       - "escape the room"
   - name: "theme"
     options:
@@ -85,3 +87,4 @@ slots:
       - "tile placement"
       - "time limits"
       - "bartering"
+      - "kingmaking"
