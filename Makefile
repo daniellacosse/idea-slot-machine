@@ -1,20 +1,12 @@
-BUILDFILES_FOLDER=.buildfiles
-BUILDFILES_REPO=git@github.com:daniellacosse/typescript-buildfiles.git
-COMMANDS=$(BUILDFILES_FOLDER)/main.mk $(BUILDFILES_FOLDER)/commands/*.mk
+include .buildfiles/index.mk
 
-override SOURCE_FOLDER=app
-override PACKAGE_ENTRY_POINT=$(SOURCE_FOLDER)/index.html
-override PACKAGE_FOLDER=artifacts
-override PACKAGE_BUILD=$(PACKAGE_FOLDER)/$(SOURCE_FOLDER)/index.html
-override PACKAGE_TARGET=browser
+.buildfiles/index.mk:
+	git submodule add --force https://github.com/daniellacosse/typescript-buildfiles.git .buildfiles
 
-include $(COMMANDS)
+SLOTS_FOLDER=$(APPLICATION_FOLDER)/slots
+SLOTS_ENTRY_POINT=$(SLOTS_FOLDER)/index.html
 
-default: $(PROXY_FOLDER)
-	make $(PROJECT_DEPENDENCY_PROXY_TARGETS) ;\
-	yarn parcel $(PACKAGE_ENTRY_POINT) \
-		--out-dir $(PROXY_FOLDER)/dist \
-		--cache-dir $(PROXY_FOLDER)/.cache
-
-$(COMMANDS):
-	git submodule add --force $(BUILDFILES_REPO) $(BUILDFILES_FOLDER)
+# yarn build
+.PHONY: build
+build: setup
+	make RECIPE=parcel ENTRY=$(SLOTS_ENTRY_POINT) TASK=artifact

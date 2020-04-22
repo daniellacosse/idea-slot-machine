@@ -1,1 +1,1 @@
-.buildfiles/defaults/.postcssrc.js
+.buildfiles/configuration/.postcssrc.js
