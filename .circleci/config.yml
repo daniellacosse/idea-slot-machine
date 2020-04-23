@@ -34,7 +34,7 @@ commands:
             - v1-dependencies-
 
       - run: |
-          rm -rf .buildfiles
+          rm -rf .gitmodules && rm -rf .buildfiles
           git submodule add --force git@github.com:daniellacosse/typescript-buildfiles.git .buildfiles
           make .artifacts/yarn.lock
 
