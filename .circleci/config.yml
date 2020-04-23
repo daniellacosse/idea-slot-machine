@@ -53,7 +53,7 @@ jobs:
 workflows:
   check:
     jobs:
-      - check:
+      - checks:
           filters:
             branches:
               ignore:
