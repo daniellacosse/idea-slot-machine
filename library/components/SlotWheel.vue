@@ -1,7 +1,10 @@
 <template>
   <section
     class="SlotWheel"
-    v-bind:class="{ 'SlotWheel--set': hasSpun && !isSpinning, 'SlotWheel--tick': hasTicked }"
+    v-bind:class="{
+      'SlotWheel--set': hasSpun && !isSpinning,
+      'SlotWheel--tick': hasTicked,
+    }"
     v-bind:style="{ 'animation-duration': `${tickDuration}ms` }"
     @animationend="_clearTick"
   >
@@ -10,22 +13,21 @@
   </section>
 </template>
 
-
 <script lang="ts">
 import Component from "vue-class-component";
-import ShuffleQueue from "../classes/ShuffleQueue";
+import ShuffleQueue from "../helpers/ShuffleQueue";
 import Vue from "vue";
 
-import config from "app.config.yml";
-import randomIntFactory from "../functions/randomIntFactory";
+import config from "../../app.config.json";
+import randomIntFactory from "../helpers/randomIntFactory";
 
 @Component({
   props: {
     name: String,
-    options: Array
-  }
+    options: Array,
+  },
 })
-/** 
+/**
  * the SlotWheel, once spun, triggers at a regular interval, taking care to not
  * repeat the same thing twice.
  */
@@ -42,27 +44,26 @@ export default class SlotWheel extends Vue {
 
   /**
    * randomizes the final tick duration
-   * 
+   *
    * @returns {number} the duration, in MS
    */
-  randomFinalTickInterval: () => number = () => randomIntFactory(
-    this.finalTickInterval.max,
-    this.finalTickInterval.min
-  )();
+  randomFinalTickInterval: () => number = () =>
+    randomIntFactory(this.finalTickInterval.max, this.finalTickInterval.min)();
 
   /**
    * randomizes the initial tick velocity
-   * 
+   *
    * @returns {number} the velocity, in MS
    */
-  randomStartingVelocity: () => number = () => randomIntFactory(
-    this.startingSlotVelocityMS.max,
-    this.startingSlotVelocityMS.min
-  )();
+  randomStartingVelocity: () => number = () =>
+    randomIntFactory(
+      this.startingSlotVelocityMS.max,
+      this.startingSlotVelocityMS.min
+    )();
 
   /**
    * spin() starts spinning the slot wheel, once called.
-   * 
+   *
    * @returns {Promise<void>} a promise that resolves once the wheel has stopped spinning
    */
   spin() {
@@ -74,7 +75,7 @@ export default class SlotWheel extends Vue {
 
     let nextTimeout = startingVelocity;
 
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this._tick({ finalTickInterval, nextTimeout }, resolve);
     });
   }
@@ -82,7 +83,7 @@ export default class SlotWheel extends Vue {
   /**
    * _tick uses the configured frictionCoefficient to determine whether to
    * calculate another PhysicsFrame or stop the spinner
-   * 
+   *
    * @param {function} resolve callback to invoke if this is the last tick on the wheel
    * @returns {void}
    */
@@ -98,13 +99,16 @@ export default class SlotWheel extends Vue {
       this.tickDuration = nextTimeout / 2;
       this.hasTicked = true;
 
-      setTimeout(() => this._tick({ finalTickInterval, nextTimeout }, resolve), nextTimeout);
+      setTimeout(
+        () => this._tick({ finalTickInterval, nextTimeout }, resolve),
+        nextTimeout
+      );
     }
   }
 
   /**
    * clears the `hasTicked` property, which preps the SlotWheel for its next animation
-   * 
+   *
    * @returns {void}
    */
   _clearTick() {
@@ -113,21 +117,20 @@ export default class SlotWheel extends Vue {
 }
 </script>
 
-
 <style scoped>
 .SlotWheel {
+  align-items: center;
+  background: var(--background-color);
+  border-radius: calc(var(--horiz-padding) / 2);
+  display: flex;
+  flex-direction: column;
   height: calc(var(--title-size) * 6);
+  justify-content: space-around;
+
+  overflow: hidden;
   padding: var(--vert-padding) var(--horiz-padding);
 
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
-  overflow: hidden;
-  border-radius: calc(var(--horiz-padding) / 2);
-  background: var(--background-color);
 
   transition: background-color 350ms ease-out;
 
@@ -160,33 +163,32 @@ export default class SlotWheel extends Vue {
 }
 
 .SlotWheel__value {
-  text-align: center;
-  font-size: var(--title-size);
-
   color: var(--type-text-color);
   font-family: monospace;
-  position: relative;
-  top: calc(var(--caption-size) / 2);
+  font-size: var(--title-size);
   hyphens: auto;
 
   /* annoyingly, autoprefixer doesn't do this for us? */
   -webkit-hyphens: auto;
+  position: relative;
+  text-align: center;
+  top: calc(var(--caption-size) / 2);
 
   transition: color 350ms ease-out;
 }
 
 .SlotWheel__name {
-  font-size: var(--caption-size);
-  text-transform: uppercase;
-
-  position: absolute;
-  top: 0;
   background: var(--emphasis-background-color);
-  width: 100%;
-  text-align: center;
+
+  color: var(--set-text-color);
+  font-size: var(--caption-size);
   height: calc(2 * var(--caption-size));
   line-height: calc(2 * var(--caption-size));
 
-  color: var(--set-text-color);
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 0;
+  width: 100%;
 }
 </style>

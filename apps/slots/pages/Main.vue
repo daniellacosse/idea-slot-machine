@@ -1,26 +1,26 @@
 <template>
   <article class="Main">
-    <slot-machine ref="slotMachine" :slots="slots" @done="stopSpinning"></slot-machine>
-    <slot-lever 
-      @pull="startSpinning" 
-      :isSpinning="isSpinning"
-    ></slot-lever>
+    <slot-machine
+      ref="slotMachine"
+      :slots="slots"
+      @done="stopSpinning"
+    ></slot-machine>
+    <slot-lever @pull="startSpinning" :isSpinning="isSpinning"></slot-lever>
   </article>
 </template>
 
-
 <script lang="ts">
 import Component from "vue-class-component";
-import SlotLever from "../../library/components/SlotLever.vue";
-import SlotMachine from "../../library/components/SlotMachine.vue";
+import SlotLever from "../../../library/components/SlotLever.vue";
+import SlotMachine from "../../../library/components/SlotMachine.vue";
 import Vue from "vue";
-import config from "../../app.config.yml";
+import config from "../../../app.config.json";
 
 @Component({
   components: {
     SlotLever,
-    SlotMachine
-  }
+    SlotMachine,
+  },
 })
 /**
  * Main, default page. contains the app.
@@ -31,7 +31,7 @@ export default class Main extends Vue {
 
   /**
    * spins the slot machine
-   * 
+   *
    * @returns {void}
    */
   startSpinning() {
@@ -42,7 +42,7 @@ export default class Main extends Vue {
 
   /**
    * stops the slot machine
-   * 
+   *
    * @returns {void}
    */
   stopSpinning() {
@@ -51,16 +51,14 @@ export default class Main extends Vue {
 }
 </script>
 
-
 <style scoped>
 .Main {
+  align-items: center;
   display: flex;
   flex-direction: column;
-
-  align-items: center;
+  height: 100vh;
   justify-content: space-evenly;
 
   width: 100vw;
-  height: 100vh;
 }
 </style>

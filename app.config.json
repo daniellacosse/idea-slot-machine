@@ -1,0 +1,104 @@
+{
+  "startingSlotVelocityMS": {
+    "min": 16,
+    "max": 85
+  },
+  "finalTickInterval": {
+    "min": 850,
+    "max": 1250
+  },
+  "frictionCoeffecient": 1.3,
+  "slots": [
+    {
+      "name": "game type",
+      "options": [
+        "augmented reality",
+        "deckbuilding",
+        "dexterity",
+        "children's",
+        "roleplaying",
+        "puzzle",
+        "party",
+        "roll and move",
+        "worker placement",
+        "cooperative",
+        "area control",
+        "social deception",
+        "legacy",
+        "combat",
+        "tower defense",
+        "infinite",
+        "escape the room"
+      ]
+    },
+    {
+      "name": "theme",
+      "options": [
+        "agriculture",
+        "alchemy",
+        "commerce",
+        "cooking",
+        "cosmic horror",
+        "disease control",
+        "evolution",
+        "exploration",
+        "financial crisis",
+        "the food chain",
+        "geometry",
+        "hegemony",
+        "hoarding",
+        "invention",
+        "the life-cycle",
+        "manifest destiny",
+        "martial arts",
+        "relationships",
+        "pirates",
+        "armageddon",
+        "deforestation",
+        "prehistory",
+        "river fjording",
+        "steampunk",
+        "trains",
+        "medevial warfare",
+        "renewable energy",
+        "space exploration",
+        "monster in the closet",
+        "crime scene investigation",
+        "fear of the dark",
+        "an amusement park",
+        "a traveling circus",
+        "an aquarium",
+        "an african safari",
+        "knitting",
+        "farming",
+        "hot air balloons"
+      ]
+    },
+    {
+      "name": "key mechanic",
+      "options": [
+        "asymmetric characters",
+        "auction house",
+        "battle royale",
+        "blackbox",
+        "card drafting",
+        "simultaneous turns",
+        "fog of war",
+        "memory",
+        "multiple win conditions",
+        "teams",
+        "perfect knowledge",
+        "engine building",
+        "rule changes",
+        "overlapping cards",
+        "pre-game decisions",
+        "limited resources",
+        "storytelling",
+        "tile placement",
+        "time limits",
+        "bartering",
+        "kingmaking"
+      ]
+    }
+  ]
+}
