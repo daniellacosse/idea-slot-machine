@@ -42,7 +42,7 @@ commands:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 jobs:
-  check:
+  checks:
     executor: node
 
     steps:
