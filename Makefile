@@ -1,7 +1,7 @@
 include .buildfiles/index.mk
 
 .buildfiles/index.mk:
-	git submodule add --force git@github.com:daniellacosse/typescript-buildfiles.git .buildfiles
+	git submodule update --init --recursive
 
 ifeq ($(NODE_ENV),production)
 

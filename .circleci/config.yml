@@ -33,10 +33,7 @@ commands:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies-
 
-      - run: |
-          rm -rf .gitmodules && rm -rf .buildfiles
-          git submodule add --force git@github.com:daniellacosse/typescript-buildfiles.git .buildfiles
-          make .artifacts/yarn.lock
+      - run: make .artifacts/yarn.lock
 
       - save_cache:
           paths:
