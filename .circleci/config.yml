@@ -35,86 +35,29 @@ commands:
 
       - run: |
           rm -rf .buildfiles
-          git clone git@github.com:daniellacosse/typescript-buildfiles.git .buildfiles
-          make .make/yarn.lock
+          git submodule add --force git@github.com:daniellacosse/typescript-buildfiles.git .buildfiles
+          make .artifacts/yarn.lock
 
       - save_cache:
           paths:
-            - .make
+            - .artifacts
             - .buildfiles
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 jobs:
-  build:
+  check:
     executor: node
 
     steps:
       - get_dependencies
 
-      - run: make artifacts/app/index.html
-
-  lint:
-    executor: node
-
-    steps:
-      - get_dependencies
-
-      - run: make lint
-
-  test:
-    executor: node
-
-    steps:
-      - get_dependencies
-
-      - run: make test
-
-  coverage:
-    executor: node
-
-    steps:
-      - get_dependencies
-
-      - run: make coverage
-
-  # release_patch:
-  #   executor: node
-  #   steps:
-  #     - get_dependencies
-  #     - set_git_user
-  #     - run: |
-  #         set -e
-  #         git checkout $CIRCLE_BRANCH
-  #         # tag master with new version/docs and push
-  #         make release!
-  #         git push origin $CIRCLE_BRANCH --tags
+      - run: make checks
 
 workflows:
-  build:
+  check:
     jobs:
-      - build:
+      - check:
           filters:
             branches:
               ignore:
                 - master
-      - lint:
-          filters:
-            branches:
-              ignore:
-                - master
-      - test:
-          filters:
-            branches:
-              ignore:
-                - master
-      - coverage:
-          filters:
-            branches:
-              ignore:
-                - master
-  # release:
-  #   jobs:
-  #     - release_patch:
-  #         filters:
-  #           branches:
-  #             only: master
