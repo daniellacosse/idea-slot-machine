@@ -38,7 +38,6 @@ commands:
       - save_cache:
           paths:
             - .artifacts
-            - .buildfiles
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 jobs:
