@@ -3,12 +3,6 @@ include .buildfiles/index.mk
 .buildfiles/index.mk:
 	git submodule update --init --recursive
 
-ifeq ($(NODE_ENV),production)
-
-override PROJECT_DEPENDENCIES=$(ARTIFACT_FOLDER)/Gemfile.lock $(ARTIFACT_FOLDER)/yarn.lock
-
-endif
-
 SLOTS_FOLDER=$(APPLICATION_FOLDER)/slots
 SLOTS_ENTRY=$(SLOTS_FOLDER)/index.html
 
