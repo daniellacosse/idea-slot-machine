@@ -3,7 +3,7 @@ version: 2.1
 executors:
   node:
     docker:
-      - image: circleci/ruby:latest-node
+      - image: circleci/node:latest
 
 commands:
   set_git_user:
@@ -30,7 +30,7 @@ commands:
 
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
             - v1-dependencies-
 
       - run: make .artifacts/yarn.lock
@@ -38,7 +38,7 @@ commands:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-{{ .Environment.CACHE_VERSION }}-{{ checksum "yarn.lock" }}
 jobs:
   checks:
     executor: node
