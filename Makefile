@@ -19,8 +19,8 @@ build: setup
 # yarn checks
 .PHONY: checks
 checks: setup
-	@TASK=check ENTRY=$(SLOTS_ENTRY) yarn concurrently \
+	@yarn concurrently \
 		-n jest,eslint,stylelint \
-		"make RECIPE=jest" \
-		"make RECIPE=eslint" \
-		"make RECIPE=stylelint" \
+		"make RECIPE=jest TASK=check ENTRY=$(SLOTS_ENTRY)" \
+		"make RECIPE=eslint TASK=check ENTRY=$(SLOTS_ENTRY)" \
+		"make RECIPE=stylelint TASK=check ENTRY=$(SLOTS_ENTRY)"
