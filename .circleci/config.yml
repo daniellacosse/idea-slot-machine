@@ -48,7 +48,7 @@ jobs:
     steps:
       - get_dependencies
 
-      - run: make checks
+      - run: yarn checks
 
 workflows:
   checks:
