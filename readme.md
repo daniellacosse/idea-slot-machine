@@ -1,11 +1,5 @@
 # Idea Slot Machine [![CircleCI](https://circleci.com/gh/daniellacosse/idea-slot-machine.svg?style=svg)](https://circleci.com/gh/daniellacosse/idea-slot-machine)
 
-> before you get started, you need `brew`:
-
-```sh
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
 ## commands (osx only)
 
 ### `yarn start`
