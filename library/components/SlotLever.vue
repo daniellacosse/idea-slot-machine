@@ -1,37 +1,43 @@
 <template>
-  <button class="SlotLever" @click="() => this.$emit('pull')" 
+  <button
+    class="SlotLever"
+    @click="() => this.$emit('pull')"
     :disabled="isSpinning"
-  >{{ text }}</button>
+  >
+    {{ text }}
+  </button>
 </template>
 
 <script lang="ts">
-export default {
+import Vue from "vue";
+
+export default Vue.extend({
   computed: {
     text() {
-      return this.isSpinning ? "Spinning..." : "Spin!"
-    }
+      return this.isSpinning ? "Spinning..." : "Spin!";
+    },
   },
   props: {
-    isSpinning: Boolean
+    isSpinning: Boolean,
   },
-};
+});
 </script>
 
 <style scoped>
 .SlotLever {
-  font-size: var(--title-size);
-  padding: var(--vert-padding) var(--horiz-padding);
-
-  color: var(--white-color);
   background: var(--emphasis-background-color);
-
-  width: var(--min-supported-width);
   border-radius: calc(var(--horiz-padding) / 2);
 
-  line-height: 2em;
-  font-family: HelveticaNeue, "HelveticaNeue", Helvetica, sans-serif;
+  color: var(--white-color);
 
   cursor: pointer;
+  font-family: HelveticaNeue, "HelveticaNeue", Helvetica, sans-serif;
+  font-size: var(--title-size);
+
+  line-height: 2em;
+  padding: var(--vert-padding) var(--horiz-padding);
+
+  width: var(--min-supported-width);
 }
 
 .SlotLever[disabled] {

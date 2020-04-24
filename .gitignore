@@ -11,8 +11,8 @@ yarn-error.log
 .jest-test-results.json
 coverage
 
-# parceljs
-.cache
+# make
+.artifacts
 
 # circleci
 config.local.yml

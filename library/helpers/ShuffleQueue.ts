@@ -1,4 +1,4 @@
-import randomIntFactory from "../functions/randomIntFactory";
+import randomIntFactory from "./randomIntFactory";
 
 /**
  *
@@ -20,7 +20,6 @@ export default class ShuffleQueue<T> {
   public constructor(items: T[] = []) {
     this.items = items;
 
-    this._previousItem = null;
     this._futureItems = [...items];
   }
 

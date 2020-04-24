@@ -1,20 +1,26 @@
-BUILDFILES_FOLDER=.buildfiles
-BUILDFILES_REPO=git@github.com:daniellacosse/typescript-buildfiles.git
-COMMANDS=$(BUILDFILES_FOLDER)/main.mk $(BUILDFILES_FOLDER)/commands/*.mk
+include .buildfiles/index.mk
 
-override SOURCE_FOLDER=app
-override PACKAGE_ENTRY_POINT=$(SOURCE_FOLDER)/index.html
-override PACKAGE_FOLDER=artifacts
-override PACKAGE_BUILD=$(PACKAGE_FOLDER)/$(SOURCE_FOLDER)/index.html
-override PACKAGE_TARGET=browser
+.buildfiles/index.mk:
+	git submodule update --init --recursive
 
-include $(COMMANDS)
+SLOTS_FOLDER=$(APPLICATION_FOLDER)/slots
+SLOTS_ENTRY=$(SLOTS_FOLDER)/index.html
 
-default: $(PROXY_FOLDER)
-	make $(PROJECT_DEPENDENCY_PROXY_TARGETS) ;\
-	yarn parcel $(PACKAGE_ENTRY_POINT) \
-		--out-dir $(PROXY_FOLDER)/dist \
-		--cache-dir $(PROXY_FOLDER)/.cache
+# yarn start
+.PHONY: start
+start: setup
+	make ENTRY=$(SLOTS_ENTRY) TASK=server RECIPE=parcel
 
-$(COMMANDS):
-	git submodule add --force $(BUILDFILES_REPO) $(BUILDFILES_FOLDER)
+# yarn build
+.PHONY: build
+build: setup
+	make ENTRY=$(SLOTS_ENTRY) TASK=artifact RECIPE=parcel
+
+# yarn checks
+.PHONY: checks
+checks: setup
+	@TASK=check ENTRY=$(SLOTS_ENTRY) yarn concurrently \
+		-n jest,eslint,stylelint \
+		"make RECIPE=jest" \
+		"make RECIPE=eslint" \
+		"make RECIPE=stylelint" \
