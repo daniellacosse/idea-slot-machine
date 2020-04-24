@@ -28,18 +28,19 @@ commands:
       - checkout
       - set_production_environment
 
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
+      # - restore_cache:
+      #     keys:
+      #       - v1-dependencies-{{ checksum "yarn.lock" }}
+      #       - v1-dependencies-
 
       - run: make .artifacts/yarn.lock
 
-      - save_cache:
-          paths:
-            - .artifacts
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      # - save_cache:
+      #     paths:
+      #       - .artifacts
+      #       - .buildfiles
+      #       - node_modules
+      #     key: v1-dependencies-{{ checksum "yarn.lock" }}
 jobs:
   checks:
     executor: node
