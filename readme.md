@@ -16,4 +16,8 @@ starts the development server(s)
 
 creates a production build in `.artifacts`
 
+### `yarn checks`
+
+check to see if jest, stylelint, and eslint pass
+
 > See the rest at https://github.com/daniellacosse/typescript-buildfiles#commands
